@@ -1,6 +1,7 @@
 import java.time.LocalDate;
+import java.util.Scanner;
 
-public class Persona {
+public abstract class Persona {
     String nombre;
     int edad;
     String correo;
@@ -9,6 +10,8 @@ public class Persona {
     char sexo;
     String tipoDeSangre;
     int contactoEmergencia;
+
+
 
     public Persona(String nombre, int edad, String correo, int telefono, LocalDate fechaNacimiento, char sexo, String tipoDeSangre, int contactoEmergencia) {
         this.nombre = nombre;
@@ -83,5 +86,19 @@ public class Persona {
 
     public void setContactoEmergencia(int contactoEmergencia) {
         this.contactoEmergencia = contactoEmergencia;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", correo='" + correo + '\'' +
+                ", telefono=" + telefono +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", sexo=" + sexo +
+                ", tipoDeSangre='" + tipoDeSangre + '\'' +
+                ", contactoEmergencia=" + contactoEmergencia +
+                '}';
     }
 }
