@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Corredor extends Persona{
@@ -17,19 +18,63 @@ public class Corredor extends Persona{
         System.out.print("Ingrese su nombre: ");
         String nombre = sc.nextLine();
 
-        System.out.print("\nIngrese su edad: ");
-        int edad = sc.nextInt();
+
+        int edad;
+        while (true){
+            try {
+                System.out.print("\nIngrese su edad: ");
+
+
+            int edadtemp = sc.nextInt();
+            if (edadtemp < 0 || edadtemp > 100){
+                System.out.println("Ingrese una edad valida");
+            }
+            else{
+                edad = edadtemp;
+                break;
+            }
+        } catch (InputMismatchException e){
+                System.out.println("ERROR Coloque una número entero para la edad");
+                sc.nextLine();}
+        }
         sc.nextLine();
+
 
         System.out.print("Ingrese el correo: ");
         String correo = sc.nextLine();
 
-        System.out.print("Ingrese el teléfono: ");
-        int telefono = sc.nextInt();
-        sc.nextLine();
 
-        System.out.print("Ingrese la fecha de nacimiento (YYYY-MM-DD): ");
-        LocalDate fechaNacimiento = LocalDate.parse(sc.nextLine());
+        int telefono;
+        while (true){
+            try{
+                System.out.print("Ingrese el teléfono: ");
+                int telefonotemp = sc.nextInt();
+                if (telefonotemp < 0){
+                    System.out.println("Coloque un número positivo");
+                }
+                else{
+                    telefono = telefonotemp;
+                    break;
+                }
+
+            }catch (InputMismatchException e){
+                System.out.println("ERROR Coloque números enteros para su número de telefeno");
+                sc.nextLine();
+            }
+        }
+
+        sc.nextLine();
+        LocalDate fechaNacimiento = null;
+        while(fechaNacimiento == null){
+            try{
+                System.out.print("Ingrese la fecha de nacimiento (YYYY-MM-DD): ");
+                fechaNacimiento = LocalDate.parse(sc.nextLine());
+
+            }catch (InputMismatchException e){
+                System.out.println("ERROR coloque una fecha valida en el formato (YYYY-MM-DD)");
+                sc.nextLine();
+            }
+        }
 
         System.out.print("Ingrese el sexo (M/F): ");
         char sexo = sc.nextLine().charAt(0);
