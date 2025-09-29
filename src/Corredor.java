@@ -67,7 +67,7 @@ public class Corredor extends Persona{
     public String toString() {
         return "Corredor{" +
                 "tiempo=" + tiempo +
-                ", posicion=" + posicion +
+                ", posicion:" + posicion +
                 "} " + super.toString();
     }
 }
